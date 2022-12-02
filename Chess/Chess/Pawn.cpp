@@ -30,7 +30,7 @@ void Pawn::Step(List<List<Figure>>* allFigure, Point newCoords)
 				Empty empty = { {x,y} };
 				input.add(empty);
 			}
-			if (y == outputCoords.y && x == outputCoords.x) {
+			else if (y == outputCoords.y && x == outputCoords.x) {
 
 				input.add(figure);
 			}

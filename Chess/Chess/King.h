@@ -1,7 +1,7 @@
 #ifndef King_h
 #define King_h
 #include "Figure.h"
-
+#include "Empty.h"
 class King : public Figure
 {
 public:

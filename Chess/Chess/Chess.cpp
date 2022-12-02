@@ -6,7 +6,7 @@ int main()
     Board board;
     board.InitBoard();
     board.RefreshBoard();
-    board.doStep({ 0,1 });
+    board.doStep({ 5,0 });
     board.RefreshBoard();
 
 }

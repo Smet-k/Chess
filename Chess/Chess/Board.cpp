@@ -40,6 +40,7 @@ void Board::InitBoard()
         for (int x = 0;x < 8; x++)
         {
             
+            //if (y == 1 || y == 6)
             if (y == 1 || y == 6)
             {
                 Pawn pawn = { { x,y } };
@@ -188,16 +189,25 @@ void Board::Step(Player player) {}
 void Board::doStep(Point coords) // newCoords are temporaly
 {
     Figure figureToStep = allFigures[coords.y][coords.x];
-    
+
     switch (figureToStep.Symbol)
     {
-        case 'P':((Pawn*)&figureToStep)->Step(&allFigures, coords);
-        case 'E':((King*)&figureToStep)->Step(&allFigures, coords);
-        case 'K':((Knight*) & figureToStep)->Step(&allFigures, coords);
-        case 'B':((Bishop*)&figureToStep)->Step(&allFigures, coords);
-        case 'R':((Rook*)&figureToStep)->Step(&allFigures, coords);
-        case 'Q':((Queen*)&figureToStep)->Step(&allFigures, coords);
+        case 'P':((Pawn*)&figureToStep)->Step(&allFigures, coords); break;
+        case 'E':((King*)&figureToStep)->Step(&allFigures, coords); break;
+        case 'K':((Knight*)&figureToStep)->Step(&allFigures, coords); break;
+        case 'B':((Bishop*)&figureToStep)->Step(&allFigures, coords); break;
+        case 'R':((Rook*)&figureToStep)->Step(&allFigures, coords); break;
+        case 'Q':((Queen*)&figureToStep)->Step(&allFigures, coords); break;
     }
+
+    /*
+    if(figureToStep.Symbol == 'P'){ ((Pawn*)&figureToStep)->Step(&allFigures, coords); }
+    else if(figureToStep.Symbol == 'E') { ((King*)&figureToStep)->Step(&allFigures, coords); }
+    else if(figureToStep.Symbol == 'K') { ((Knight*)&figureToStep)->Step(&allFigures, coords); }
+    else if(figureToStep.Symbol == 'B') { ((Bishop*)&figureToStep)->Step(&allFigures, coords); }
+    else if(figureToStep.Symbol == 'R') { ((Rook*)&figureToStep)->Step(&allFigures, coords); }
+    else if(figureToStep.Symbol == 'Q') { ((Queen*)&figureToStep)->Step(&allFigures, coords); }
+    */
 
     /*
     List<List<Figure>> inputList;
