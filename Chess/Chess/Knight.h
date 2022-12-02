@@ -1,6 +1,6 @@
 #ifndef Knight_h
 #define Knight_h
-
+#include "Empty.h"
 #include "Figure.h"
 
 class Knight : public Figure

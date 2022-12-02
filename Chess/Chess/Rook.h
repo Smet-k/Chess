@@ -1,7 +1,7 @@
 #ifndef Rook_h
 #define Rook_h
 #include "Figure.h"
-
+#include "Empty.h"
 class Rook : public Figure
 {
 public:

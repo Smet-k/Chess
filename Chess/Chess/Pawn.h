@@ -1,7 +1,7 @@
 #ifndef Pawn_h
 #define Pawn_h
 #include "Figure.h"
-
+#include "Empty.h"
 
 class Pawn : public Figure
 {

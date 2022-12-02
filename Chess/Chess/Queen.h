@@ -1,7 +1,7 @@
 #ifndef Queen_h
 #define Queen_h
 #include "Figure.h"
-
+#include "Empty.h"
 class Queen : public Figure
 {
 public:

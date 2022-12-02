@@ -1,4 +1,4 @@
-#ifndef King_H
+#ifndef King_h
 #define King_h
 #include "Figure.h"
 

@@ -1,7 +1,7 @@
 #ifndef Bishop_h
 #define Bishop_h
 #include "Figure.h"
-
+#include "Empty.h"
 class Bishop : public Figure
 {
 public:

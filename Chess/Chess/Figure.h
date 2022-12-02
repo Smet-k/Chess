@@ -2,7 +2,6 @@
 #define Figure_h
 #include "Point.h"
 #include "List.h"
-#include "Empty.h"
 class Figure
 {
 public:
