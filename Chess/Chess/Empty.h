@@ -6,7 +6,7 @@
 class Empty : public Figure
 {
 public:
-	Empty(Point coords) : Figure(' ', coords) {}
+	Empty(Point coords) : Figure(' ', coords, ' ') {}
 
 	void Step(List<List<Figure>>* allFigure, Point newCoords) {}
 };

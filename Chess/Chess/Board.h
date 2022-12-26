@@ -17,18 +17,31 @@
 
 class Board
 {
+protected:
     bool searchForFigure(Point coords);
-
-    char letters[26] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m',
-    'n','o','p','q','r','s','t','u','v','w','x','y','z' };
 
     const int CellSize = 5;
     
     const char BlackCellSymbol = ' ';
     const char WhiteCellSymbol = '-';
+
 public:
 
+    bool isCheckBool = false;
+    bool isMateBool = false;
+
+    bool skip = false;
+
+    bool activePlayer = true; // true - white , false - black
+
+    bool stepDone;
+
+    char letters[26] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m',
+    'n','o','p','q','r','s','t','u','v','w','x','y','z' };
+
     void doStep(Point coords);
+
+    int convertLetter(char input);
 
     List<List<Figure>> allFigures;
 
@@ -46,9 +59,9 @@ public:
 
     char getSymbol(int rowIndex, int columnIndex);
 
-    bool IsCheck();
+    void IsCheck(Point Coords);
 
-    bool IsMate();
+    bool IsMate(Point Coords);
 };
 
 #endif

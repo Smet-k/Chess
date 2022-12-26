@@ -3,7 +3,14 @@
 
 class Player
 {
+public:
+	char activePlayer = 'W';
 
+	bool changeTurns()
+	{
+		if (activePlayer == 'W') { activePlayer = 'B'; }
+		if (activePlayer == 'B') { activePlayer = 'W'; }
+	}
 };
 
 

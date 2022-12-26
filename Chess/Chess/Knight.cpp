@@ -1,41 +1,78 @@
 #include "Knight.h"
 
-void Knight::Step(List<List<Figure>>* allFigure, Point newCoords)
+bool Knight::CalculateStep(Point target, List<List<Figure>>* allFigure)
 {
+	List<List<Figure>> output = allFigure[0];
+	Point outputCoords = { Coords.x, Coords.y };
+	while (true)
+	{
+		if (target.x == Coords.x - 2 && target.y == Coords.y + 1 || target.x == Coords.x - 2 && target.y == Coords.y - 1 ||
+			target.x == Coords.x + 2 && target.y == Coords.y + 1 || target.x == Coords.x + 2 && target.y == Coords.y - 1 ||
+			target.x == Coords.x - 1 && target.y == Coords.y + 2 || target.x == Coords.x + 1 && target.y == Coords.y + 2 ||
+			target.x == Coords.x - 1 && target.y == Coords.y - 2 || target.x == Coords.x + 1 && target.y == Coords.y - 2)
+		{
+			if (output[target.y][target.x].Color != Color)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+}
+
+bool Knight::Step(List<List<Figure>>* allFigure, Point newCoords)
+{
+	Board func;
 	// black step
 	//check if move allowed function;
 	Empty empty = { newCoords };
 
 	//finish it
 	// white move
-	Point outputCoords = { Coords.x, Coords.y };
+	
 
 	List<List<Figure>> inputList;
 	List<List<Figure>> output = allFigure[0];
-
-	int newX, newY;
+	Point outputCoords = { Coords.x, Coords.y };
+	int newX, newY; char rawX;
 	while (true)
 	{
-		std::cout << "\nEnter coordinates you want to move to: ";
-		std::cout << "\n X: ";
-		std::cin >> newX;
-		// Add converter from letters to coordinate, using numbers for now
-		std::cout << "\n Y: ";
+		std::cout << "\nEnter coordinates you want to move to(row): ";
 		std::cin >> newY;
-		if (newX == outputCoords.x - 2 && newY == outputCoords.y + 1 || newX == outputCoords.x - 2 && newY == outputCoords.y - 1 || 
-			newX == outputCoords.x + 2 && newY == outputCoords.y + 1 || newX == outputCoords.x + 2 && newY == outputCoords.y - 1 ||
-			newX == outputCoords.x - 1 && newY == outputCoords.y + 2 || newX == outputCoords.x + 1 && newY == outputCoords.y + 2 ||
-			newX == outputCoords.x - 1 && newY == outputCoords.y - 2 || newX == outputCoords.x + 1 && newY == outputCoords.y - 2)
+		newY = 8 - newY;
+		std::cout << "Enter coordinates you want to move to(column): ";
+		std::cin >> rawX;
+		newX = func.convertLetter(rawX);
+		if (newX == Coords.x - 2 && newY == Coords.y + 1 || newX == Coords.x - 2 && newY == Coords.y - 1 ||
+			newX == Coords.x + 2 && newY == Coords.y + 1 || newX == Coords.x + 2 && newY == Coords.y - 1 ||
+			newX == Coords.x - 1 && newY == Coords.y + 2 || newX == Coords.x + 1 && newY == Coords.y + 2 ||
+			newX == Coords.x - 1 && newY == Coords.y - 2 || newX == Coords.x + 1 && newY == Coords.y - 2)
 		{
-			break;
+			if (output[newY][newX].Color != Color)
+			{
+				break;
+			}
+			else
+			{
+				return true;
+			}
 		}
 		else
 		{
-			std::cout << "This figure can't move that way.";
+			return true;
 		}
 	}
-
+	outputCoords = { newX, newY };
 	Figure figure = output[Coords.y][Coords.x];
+	figure.Coords = outputCoords;
 	for (int y = 0;y < output.length();y++)
 	{
 		List<Figure> input;
@@ -59,4 +96,5 @@ void Knight::Step(List<List<Figure>>* allFigure, Point newCoords)
 		inputList.add(input);
 	}
 	allFigure->first = inputList.first;
+	return false;
 }
